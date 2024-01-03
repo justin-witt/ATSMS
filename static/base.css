@@ -1,0 +1,69 @@
+/*
+File: base.css
+Author: Justin Wittenmeier
+Description: CSS styles for the ATSMS server management tool.
+
+Last Modified: January 1, 2024
+*/
+
+/* Reset default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply modern layout using Flexbox */
+body {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Set minimum height to full viewport height */
+    background-color: #1e1e1e; /* Background color for the body */
+    font-family: Arial, sans-serif; /* Specify a common font */
+    font-size: 16px; /* Set base font size (1rem = 16px) */
+    color: #fff; /* Color for text */
+}
+
+/* Container for your content */
+main {
+    width: 80%; /* Set width relative to the viewport */
+    max-width: 800px; /* Set maximum width for the content */
+    padding: 1em; /* Use em for padding */
+    background-color: #444444; /* Background color for the content area */
+    border-radius: 1.5em; /* Soften the corners using em */
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.1); /* Add a slight shadow effect using em */
+    text-align: center; /* Center text */
+}
+
+/* Style the footer */
+footer {
+    padding : 0em;
+    padding-top : 1em;
+    background-color: #444444;
+    color: #fff;
+    text-align: center;
+}
+
+footer > a {
+    text-decoration: none;
+    color: inherit
+}
+
+footer > a:hover  {
+    color: #333333;
+    cursor: pointer;
+}
+
+button {
+    padding: 0.625rem 3rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}

@@ -1,0 +1,57 @@
+/* login_styles.css */
+
+/* Styles specifically for the login page */
+body {
+    font-size: 16px; /* Set base font size (1rem = 16px) */
+}
+
+main {
+    max-width: 30rem; /* Use rem for consistent width */
+}
+
+.container {
+    width: 20rem; /* Use rem for consistent sizing */
+    padding: 1.25rem; /* Use rem for consistent padding */
+    background-color: #fff;
+    border-radius: 0.5rem; /* Use rem for rounded corners */
+    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1); /* Use rem for box shadow */
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 1.25rem; /* Use rem for consistent spacing */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.5rem; /* Use rem for consistent spacing */
+    margin-right: auto;
+}
+
+input[type="password"] {
+    padding: 0.5rem;
+    margin-bottom: 1rem; /* Use rem for consistent spacing */
+    border: 0.0625rem solid #ccc; /* Use rem for border */
+    border-radius: 0.25rem; /* Use rem for rounded corners */
+    width: 100%;
+}
+
+input[type="submit"] {
+    padding: 0.625rem 3rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #4D94FF;
+}

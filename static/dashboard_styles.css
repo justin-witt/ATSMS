@@ -1,0 +1,61 @@
+/* dashboard_styles.css */
+
+/* Styles specifically for the dashboard page */
+/* Add or modify styles as needed */
+
+div.dashboard-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard-actions a,
+.dashboard-actions button {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.3s ease; /* Changed from background-color */
+}
+
+.dashboard-actions a {
+    background-color: #007BFF; /* Blue color for logout */
+}
+
+.dashboard-actions a:hover,
+.dashboard-actions button:hover {
+    opacity: 0.8; /* Reduce opacity on hover for visual feedback */
+}
+
+button {
+    padding : .75em;
+    margin : 0em 0.25em;
+}
+
+button.delete-btn {
+    background-color: darkred;
+}
+
+button.stop-btn {
+    background-color: red;
+}
+
+button.start-btn {
+    background-color: green;
+}
+
+ul {
+    list-style: none;
+}
+
+div.server-list> ul > li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    border: 1px solid white;
+    border-radius: .25rem;
+    margin: .5em;
+    padding: .5em;
+}

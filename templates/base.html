@@ -1,0 +1,32 @@
+<!--
+File: base.html
+Author: Justin Wittenmeier
+Description: Front-end for server management tool.
+
+Last Modified: January 1, 2024
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ATSMS{% endblock %}</title>
+    <!-- Other common CSS, scripts, etc. -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <!-- Content block -->
+    <main>
+        {% block content %}{% endblock %}
+        <footer>
+            <a href="https://github.com/justin-witt/ATSMS" target="_blank">ATSMS v0.1.0-alpha-2024.01.01</as>
+        </footer>
+    </main>
+
+</body>
+</html>

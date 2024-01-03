@@ -1,0 +1,44 @@
+<!-- dashboard.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block head %}
+    <!-- Additional styles or script links for the dashboard page -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard_styles.css') }}">
+    <!-- Any additional scripts or meta tags specific to the dashboard page -->
+    <script>
+        // Your JavaScript code specific to the dashboard can go here
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="dashboard-actions">
+        <a href="{{ url_for('views.create_server') }}">Create</a>
+        <a href="{{ url_for('views.logout') }}">Logout</a>
+    </div>
+    <div class="server-list">
+        <h1>Servers</h1>
+        {% if servers %}
+            <ul>
+                {% for server in servers %}
+                    <li>
+                        <p>{{ server.ID }}</p>
+                        <div>
+                            {% if server.running %}
+                            <button class="stop-btn" onclick="window.location.href='{{ url_for('views.handler', server_id=server.ID, action='stop') }}'">🛑</button>
+                            {% else %}
+                            <button class="edit-btn" onclick="window.location.href='{{ url_for('views.edit_server', server_id=server.ID) }}'">✎</button>
+                            <button class="delete-btn" onclick="window.location.href='{{ url_for('views.delete_server', server_id=server.ID) }}'">❌</button>
+                            <button class="start-btn" onclick="window.location.href='{{ url_for('views.handler', server_id=server.ID, action='start') }}'">🟢</button>
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No servers found.</p>
+        {% endif %}
+    </div>
+{% endblock %}

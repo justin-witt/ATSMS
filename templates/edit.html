@@ -1,0 +1,21 @@
+<!-- edit.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Edit Config{% endblock %}
+
+{% block head %}
+    <!-- Additional styles or script links for the edit page -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='edit_styles.css') }}">
+    <!-- Any additional scripts or meta tags specific to the edit page -->
+{% endblock %}
+
+{% block content %}
+    <h1>{{ server_id }}</h1>
+    <div class="edit-container">
+        <form action="{{ url_for('views.edit_server', server_id=server_id) }}" method="post" id="config-form">
+            <textarea name="config-content" id="config-content">{{ data }}</textarea>
+            <button type="submit" id="save-btn">Save</button>
+        </form>
+    </div>
+{% endblock %}
