@@ -49,6 +49,10 @@ ul {
     list-style: none;
 }
 
+ul > li {
+    align-items: center;
+}
+
 div.server-list> ul > li {
     display: flex;
     align-items: center;
@@ -58,4 +62,8 @@ div.server-list> ul > li {
     border-radius: .25rem;
     margin: .5em;
     padding: .5em;
+}
+
+p.player-count {
+    font-size: .75em;
 }

@@ -6,7 +6,7 @@ body {
 }
 
 main {
-    max-width: 30rem; /* Use rem for consistent width */
+    min-width: 25%;
 }
 
 .container {

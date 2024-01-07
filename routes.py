@@ -3,17 +3,14 @@ File: routes.py
 Author: Justin Wittenmeier
 Description: Main file for server management tool.
 
-Last Modified: January 1, 2024
+Last Modified: January 7, 2024
 
 """
-import config
+import json
 from util import servermanager
 from auth import authenticate, authentication, user
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, login_user, logout_user, current_user
-
-# initalize servermanager
-servermanager.init_manager(exe_path=config.SERVER_EXE, data_path=config.USER_DATA_DIR, default_cfg_path=config.DEFAULT_CONFIG)
 
 # views_bp: Blueprint for website pages or views
 views_bp = Blueprint('views', __name__, template_folder='templates',static_folder='static')
@@ -50,7 +47,7 @@ def logout():
 @login_required
 def dashboard():
     # Logic for dashboard view
-    return render_template('dashboard.html', servers=servermanager.get_servers(),active_servers=servermanager.get_running_servers())
+    return render_template('dashboard.html', servers=servermanager.get_servers(), active_servers=servermanager.get_running_servers())
 
 @views_bp.route('/edit/<server_id>', methods=['GET', 'POST'])
 @login_required
@@ -89,6 +86,27 @@ def handler(server_id, action):
         return redirect(url_for())
     return redirect(url_for('views.dashboard'))
 
+#Added in v0.1.1
+@views_bp.route('/player_count/<server_id>')
+@login_required
+def player_count(server_id):
+    return json.dumps([servermanager.get_player_count(server_id)])
+
+#Added in v0.1.1
+@views_bp.route('/reset/<server_id>')
+@login_required
+def reset(server_id):
+    servermanager.reset_cfg(server_id)
+    return redirect(url_for('views.edit_server', server_id=server_id))
+
+#Added in v0.1.1
+@views_bp.route('/logs/<server_id>')
+@login_required
+def logs(server_id):
+    data = servermanager.get_logs(server_id, limit=500)
+    return render_template('logs.html', server_id=servermanager.get_server_name(servermanager.get_cfg(server_id)), data=data)
+
+#AUTHENTICATION REDIRECT DO NOT TOUCH THIS
 @authentication.unauthorized_handler
-def unauthorized_callbac():
+def unauthorized_callback():
     return redirect(url_for('views.login'))

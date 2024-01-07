@@ -1,0 +1,38 @@
+/* logs_styles.css */
+
+main {
+    max-width: 90%;
+}
+
+.logs-container {
+    padding: 20px;
+    margin: 0;
+}
+
+.logs-content {
+    height: 400px; /* Adjust the height as needed */
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+#server-logs {
+    white-space: pre-wrap;
+    font-family: monospace;
+    margin: 0;
+}
+
+div.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .25rem;
+}
+
+button {
+    padding: 0.625rem 1rem;
+}
+
+button.dashboard-btn {
+    margin-right: auto;
+}

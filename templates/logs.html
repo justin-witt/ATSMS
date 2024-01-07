@@ -1,0 +1,24 @@
+<!-- logs.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Server Logs{% endblock %}
+
+{% block head %}
+    <!-- Additional styles or script links for the logs page -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='logs_styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1>Server Logs</h1>
+    <h2>{{ server_id }}</h2>
+    <div class="logs-container">
+        <div class="button-container">
+            <button class="dashboard-btn" onclick="window.location.href='{{ url_for('views.dashboard') }}'">Dashboard</button>
+        </div>
+        <div class="logs-content">
+            <pre id="server-logs">{{ "\n".join(data) }}</pre>
+        </div>
+    </div>
+{% endblock %}

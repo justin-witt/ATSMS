@@ -12,6 +12,10 @@
 
 {% block content %}
     <h1>{{ server_id }}</h1>
+    <div class="btn-container">
+        <button class="back-btn" onclick="window.location.href='{{ url_for('views.dashboard') }}'">Dashboard</button>
+        <button class="reset-btn" onclick="window.location.href='{{ url_for('views.reset', server_id=server_id) }}'">↺</button>
+    </div>
     <div class="edit-container">
         <form action="{{ url_for('views.edit_server', server_id=server_id) }}" method="post" id="config-form">
             <textarea name="config-content" id="config-content">{{ data }}</textarea>

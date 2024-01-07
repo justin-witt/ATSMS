@@ -8,9 +8,7 @@
     <!-- Additional styles or script links for the dashboard page -->
     <link rel="stylesheet" href="{{ url_for('static', filename='dashboard_styles.css') }}">
     <!-- Any additional scripts or meta tags specific to the dashboard page -->
-    <script>
-        // Your JavaScript code specific to the dashboard can go here
-    </script>
+    <script src="{{ url_for('static', filename='dashboard_script.js') }}" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -21,11 +19,17 @@
     <div class="server-list">
         <h1>Servers</h1>
         {% if servers %}
-            <ul>
+            <ul id = "server-list">
                 {% for server in servers %}
-                    <li>
-                        <p>{{ server.ID }}</p>
+                    <li id="{{ server.ID }}">
                         <div>
+                            <p>{{ server.name }}</p>
+                            {% if server.running %}
+                            <p class="player-count" id="player-count-{{ server.ID }}">Player Count: {{ server.player_count }}</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <button class="logs-button" onclick="window.location.href='{{ url_for('views.logs', server_id=server.ID) }}'">📒</button>
                             {% if server.running %}
                             <button class="stop-btn" onclick="window.location.href='{{ url_for('views.handler', server_id=server.ID, action='stop') }}'">🛑</button>
                             {% else %}

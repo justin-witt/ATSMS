@@ -27,8 +27,8 @@ body {
 
 /* Container for your content */
 main {
-    width: 80%; /* Set width relative to the viewport */
-    max-width: 800px; /* Set maximum width for the content */
+    min-width: 40%; /* Set width relative to the viewport */
+    max-width: 80%;
     padding: 1em; /* Use em for padding */
     background-color: #444444; /* Background color for the content area */
     border-radius: 1.5em; /* Soften the corners using em */
