@@ -6,7 +6,7 @@
 - Added server configuration editing features
 - Conducted initial testing and bug fixing
 
-## Version 0.1.1 (Build in progress)
+## Version 0.1.1
 - Removed placeholder/test vars
 - Updated versioning schema
 - Added changelog
