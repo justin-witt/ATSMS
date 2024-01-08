@@ -8,6 +8,7 @@ Last Modified: January 7, 2024
 """
 import json
 from util import servermanager
+from config import DEBUG
 from auth import authenticate, authentication, user
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_required, login_user, logout_user, current_user
@@ -105,6 +106,12 @@ def reset(server_id):
 def logs(server_id):
     data = servermanager.get_logs(server_id, limit=500)
     return render_template('logs.html', server_id=servermanager.get_server_name(servermanager.get_cfg(server_id)), data=data)
+
+#set in if statment to assist with debugging and testing (added in v0.1.2)
+if not DEBUG:
+    @views_bp.app_errorhandler(Exception)
+    def handle_error(e):
+        return render_template('error.html', error=e), 500
 
 #AUTHENTICATION REDIRECT DO NOT TOUCH THIS
 @authentication.unauthorized_handler

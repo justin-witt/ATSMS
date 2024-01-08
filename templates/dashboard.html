@@ -29,13 +29,13 @@
                             {% endif %}
                         </div>
                         <div>
-                            <button class="logs-button" onclick="window.location.href='{{ url_for('views.logs', server_id=server.ID) }}'">📒</button>
+                            <button class="logs-button" title="View Server Logs" onclick="window.location.href='{{ url_for('views.logs', server_id=server.ID) }}'">📒</button>
                             {% if server.running %}
-                            <button class="stop-btn" onclick="window.location.href='{{ url_for('views.handler', server_id=server.ID, action='stop') }}'">🛑</button>
+                            <button class="stop-btn" title="Stop Server" onclick="window.location.href='{{ url_for('views.handler', server_id=server.ID, action='stop') }}'">🛑</button>
                             {% else %}
-                            <button class="edit-btn" onclick="window.location.href='{{ url_for('views.edit_server', server_id=server.ID) }}'">✎</button>
-                            <button class="delete-btn" onclick="window.location.href='{{ url_for('views.delete_server', server_id=server.ID) }}'">❌</button>
-                            <button class="start-btn" onclick="window.location.href='{{ url_for('views.handler', server_id=server.ID, action='start') }}'">🟢</button>
+                            <button class="edit-btn" title="Edit Server Config" onclick="window.location.href='{{ url_for('views.edit_server', server_id=server.ID) }}'">📝</button>
+                            <button class="delete-btn" title="Delete Server" onclick="window.location.href='{{ url_for('views.delete_server', server_id=server.ID) }}'">❌</button>
+                            <button class="start-btn" title="Start Server" onclick="window.location.href='{{ url_for('views.handler', server_id=server.ID, action='start') }}'">🟢</button>
                             {% endif %}
                         </div>
                     </li>

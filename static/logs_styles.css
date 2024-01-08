@@ -34,5 +34,9 @@ button {
 }
 
 button.dashboard-btn {
-    margin-right: auto;
+    padding: 0.625rem 1rem;
+}
+
+button.refresh-btn {
+    padding: 0.625rem 1rem;
 }

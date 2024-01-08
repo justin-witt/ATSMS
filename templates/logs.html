@@ -16,6 +16,7 @@
     <div class="logs-container">
         <div class="button-container">
             <button class="dashboard-btn" onclick="window.location.href='{{ url_for('views.dashboard') }}'">Dashboard</button>
+            <button class="refresh-btn" onclick="window.location.reload()" title="Refresh">⟳</button>
         </div>
         <div class="logs-content">
             <pre id="server-logs">{{ "\n".join(data) }}</pre>

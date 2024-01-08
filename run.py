@@ -3,7 +3,7 @@ File: run.py
 Author: Justin Wittenmeier
 Description: Main file for server management tool.
 
-Version: v0.1.1
+Version: v0.1.2
 Last Modified: January 7, 2024
 
 """

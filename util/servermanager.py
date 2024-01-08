@@ -3,7 +3,7 @@ File: servermanager.py
 Author: Justin Wittenmeier
 Description: Main file for server management tool.
 
-Last Modified: January 6, 2024
+Last Modified: January 7, 2024
 """
 
 import os, random, string, subprocess, shutil
@@ -167,7 +167,8 @@ def edit_server(id : str, data : str) -> None:
     """
     target = os.path.join(__db_path(), id, "server.sii")
     with open (target, 'w') as f:
-        f.write(data)
+        #this fixes the issue of it adding whitespace between each line when saving (fixed in v0.1.2)
+        f.write("\n".join(data.splitlines()))
     print("Edited server: " + id)
 
 def start_server(id : str)  -> None:

@@ -17,7 +17,15 @@
 - Dashboard will now display server/lobby name instead of ID
 - Minor bug fixes/changes
 
+## Version 0.1.2
+- Fixed issue with editing cfg files generating white space
+- Added titles to buttons for tooltip display
+- Added error page for better handling of exceptions
+- Added refresh button to logs page
+- Minor UI adjustments
+
 ## Roadmap Ahead
 - Planned Changes
     - Transition edit page to a form upon full configuration parsing
-    - Add titles to buttons for tooltip display
+- Unplanned Considerations
+    - Implement resource monitoring for server subprocesses (CPU & RAM)
