@@ -6,6 +6,9 @@ HOST = "0.0.0.0" # 0.0.0.0 is the default.
 SECRET_KEY = "" # This will be generated if left empty.
 DEBUG = False # Sets flask to debug mode.
 
+# ATSM
+START_SERVERS = True # Start all servers on launch.
+
 # Authentication
 # SECURITY WARNING: This password is stored in plain text and is not secure.
 # Avoid using passwords for critical purposes or reusing important passwords.

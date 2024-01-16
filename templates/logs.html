@@ -12,11 +12,14 @@
 
 {% block content %}
     <h1>Server Logs</h1>
-    <h2>{{ server_id }}</h2>
+    <h2>{{ server_name }}</h2>
     <div class="logs-container">
         <div class="button-container">
             <button class="dashboard-btn" onclick="window.location.href='{{ url_for('views.dashboard') }}'">Dashboard</button>
-            <button class="refresh-btn" onclick="window.location.reload()" title="Refresh">⟳</button>
+            <div>
+                <a href="{{ url_for('views.download', file_type='log', server_id=server_id) }}" class="download"><button class="download-btn">⤵️</button></a>
+                <button class="refresh-btn" onclick="window.location.reload()" title="Refresh">🔁</button>
+            </div>
         </div>
         <div class="logs-content">
             <pre id="server-logs">{{ "\n".join(data) }}</pre>

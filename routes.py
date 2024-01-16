@@ -3,14 +3,14 @@ File: routes.py
 Author: Justin Wittenmeier
 Description: Main file for server management tool.
 
-Last Modified: January 7, 2024
+Last Modified: January 16, 2024
 
 """
 import json
 from util import servermanager
 from config import DEBUG
 from auth import authenticate, authentication, user
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for, send_file, abort
 from flask_login import login_required, login_user, logout_user, current_user
 
 # views_bp: Blueprint for website pages or views
@@ -105,8 +105,20 @@ def reset(server_id):
 @login_required
 def logs(server_id):
     data = servermanager.get_logs(server_id, limit=500)
-    return render_template('logs.html', server_id=servermanager.get_server_name(servermanager.get_cfg(server_id)), data=data)
+    return render_template('logs.html', server_name=servermanager.get_server_name(servermanager.get_cfg(server_id)), server_id=server_id, data=data)
 
+#Added in v0.1.3
+@views_bp.route('/download/<file_type>/<server_id>')
+def download(file_type, server_id):
+    
+    #might consider putting this in a match case or something
+    if file_type == 'log':
+        return send_file(servermanager.log_path(server_id), as_attachment=True)
+    
+    #retrun error if invalid request
+    return abort(400, 'Invalid request')
+
+#Exception and unauthorized handler
 #set in if statment to assist with debugging and testing (added in v0.1.2)
 if not DEBUG:
     @views_bp.app_errorhandler(Exception)

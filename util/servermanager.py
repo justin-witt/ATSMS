@@ -3,7 +3,7 @@ File: servermanager.py
 Author: Justin Wittenmeier
 Description: Main file for server management tool.
 
-Last Modified: January 7, 2024
+Last Modified: January 16, 2024
 """
 
 import os, random, string, subprocess, shutil
@@ -21,8 +21,9 @@ __server_exe : str = None # Path to server executable
 __data_path : str = None # Path to server userdata directory
 __default_cfg : str = None # Path to default server configuration
 __DB_FOLDER : str = "atsms" # Folder name for server data
-__servers : dict = {} # Container for running servers. # Removed test server from this in v0.1.1
+__servers : dict = {} # Container for running servers. Removed test server from this in v0.1.1
 __LOG_FOLDER : str = f"server.log.{__DB_FOLDER}" # Folder name for server logs (Added in v0.1.1)
+log_path = lambda ID : os.path.join(__data_path, __LOG_FOLDER, ID, "server.txt") # Added in v0.1.3
 
 # Functions
 def __db_path() -> str:
@@ -41,7 +42,7 @@ def __folder_setup() -> None:
     else:
         print("Folder already exists: " + __db_path())
 
-def init_manager(exe_path : str, data_path : str, default_cfg_path : str) -> None:
+def init_manager(exe_path : str, data_path : str, default_cfg_path : str, start_servers : bool = True) -> None:
     """
     Initializes the manager with the provided executable path, data path, and default configuration path.
 
@@ -63,6 +64,7 @@ def init_manager(exe_path : str, data_path : str, default_cfg_path : str) -> Non
     """
     global __data_path, __server_exe, __default_cfg
 
+    #if manager already initialized, do nothing
     if __server_exe or __data_path or __default_cfg:
         print("Server manager already initialized.")
         return
@@ -70,9 +72,13 @@ def init_manager(exe_path : str, data_path : str, default_cfg_path : str) -> Non
     __set_vars(exe_path, data_path, default_cfg_path)
     __folder_setup()
 
+    #removing this will break start_server() if they shutdown due to an error
     for folder in os.listdir(__db_path()):
         __atsm_launch_log(folder)
     
+    if start_servers:
+        start_all_servers()
+
     print("Initialized manager.")
 
 def get_servers() -> list:
@@ -336,3 +342,11 @@ def get_server_name(data : str) -> str :
     data = data[1].split('\n')[0].strip()
     data = data.replace('"', '')
     return data
+
+#added in v0.1.3
+def start_all_servers() -> None:
+    """
+    Starts all servers in the database.
+    """
+    for server in get_servers():
+        start_server(server.ID)
