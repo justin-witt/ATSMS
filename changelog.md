@@ -28,9 +28,3 @@
 - Upon startup all servers will now initiate automatically if START_SERVERS is set to True in config
 - Added download button to logs page
 - Minor UI adjustments
-
-## Roadmap Ahead
-- Planned Changes
-    - Transition edit page to a form upon full configuration parsing
-- Unplanned Considerations
-    - Implement resource monitoring for server subprocesses (CPU & RAM)
